@@ -36,3 +36,9 @@ build/
 
 # Visual Studio files
 .vscode/
+
+# CMake
+cmake-build-debug
+
+#Jetbrains
+.idea
