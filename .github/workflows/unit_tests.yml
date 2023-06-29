@@ -1,0 +1,31 @@
+name: build and run tests
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Install armadillo
+        run: sudo apt-get install libarmadillo-dev
+      - name: Install ensmallen
+        run: sudo apt-get install libensmallen-dev
+      - name: Build libAL
+        run: |
+          cd ${{ github.workspace }}
+          mkdir build
+          cd build
+          cmake ..
+          make
+      - name: Run tests
+        run: |
+          cd ${{ github.workspace }}
+          cd build/test
+          ctest
+
