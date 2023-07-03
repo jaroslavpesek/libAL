@@ -11,7 +11,9 @@ include_directories(include/libal)
 
 add_library(${PROJECT_NAME} SHARED
         include/libal/queryAL.hpp
-        include/libal/uncertainty.hpp)
+        include/libal/uncertainty.hpp
+        include/libal/farthest_sampling.hpp
+        include/libal/qbc.hpp)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
         -fopenmp
